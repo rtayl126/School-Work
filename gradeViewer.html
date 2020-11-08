@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Grade Viewer</title>
+</head>
+
+<body>
+	
+	<h1>Grade Viewer</h1>
+	
+	<hr>
+	<div id="gradeArea">
+	
+	</div>
+	<hr>
+	
+	<button id= "loadGrades"> Load Grades</button>
+	
+	<script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+	<script>
+		$("#loadGrades").click(function(){
+							   
+			$.ajax({
+				url: 'viewer-servicce.php',
+				type: 'get',
+				success: function(data,status){
+					if(status== "success"){
+						
+						$(#"gradeArea").html(data);
+
+					}
+				},
+				error: function (xhr, descm, err){
+					console.log(xhr);
+					console.log("details: " + desc + "\nError" + err);
+				}
+			});
+		});
+	</script>
+</body>
+</html>
